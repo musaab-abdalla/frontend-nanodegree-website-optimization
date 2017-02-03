@@ -1,0 +1,16 @@
+{
+  "name": "frontend-nanodegree-website-optimization",
+  "version": "1.0.0",
+  "description": "Website optimization project as part of the Udacity",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musaab-abdalla/frontend-nanodegree-website-optimization.git"
+  },
+  "author": "Musaab Abdalla",
+  "license": "MIT",
+  "homepage": "https://github.com/musaab-abdalla/frontend-nanodegree-website-optimization#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  }
+}
