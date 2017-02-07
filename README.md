@@ -31,7 +31,7 @@ Detailed Python Simple Server instructions can been found [here](https://docs.py
 $ open "http://localhost:8000"
 ```
 
-#1: Critical Rendering Path
+###1: Critical Rendering Path
 
 ######Overview
 
@@ -53,12 +53,12 @@ Get index.html achieves a PageSpeed score of at least 90 for Mobile and Desktop.
 * mobile: 97/100
 * desktop: 95/100
 
-#2: Frame Rate
+###2: Frame Rate
 
 ######Optimizations:
 
 
 
-#3: Computational Efficiency
+###3: Computational Efficiency
 
 ######Optimizations:
