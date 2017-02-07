@@ -51,7 +51,7 @@ Get index.html achieves a PageSpeed score of at least 90 for Mobile and Desktop.
 ######After above optimizations, PageSpeed improved to:
 
 #######* mobile: 97/100
-######* desktop: 95/100
+#######* desktop: 95/100
 
 #2: Frame Rate
 
