@@ -30,3 +30,30 @@ Detailed Python Simple Server instructions can been found [here](https://docs.py
 ```
 $ open "http://localhost:8000"
 ```
+
+#1: Critical Rendering Path
+
+######Overview
+
+Get index.html achieves a PageSpeed score of at least 90 for Mobile and Desktop.
+
+######Optimizations:
+
+* Used the async javaScript method to load Google fonts.
+* Reduce size of pizzeria.jpg image to 100px width.
+* Convert profilepic.jpg to png.
+* Optimizing images using Grunt plugin grunt-contrib-imagemin.
+* Make google-analytics script async.
+* Inline a CSS style.css file.
+* Minifying a javaScript .js file.
+* Add a media query for print.css.
+
+#2: Frame Rate
+
+######Optimizations:
+
+
+
+#3: Computational Efficiency
+
+######Optimizations:
