@@ -41,12 +41,56 @@ Get index.html achieves a PageSpeed score of at least 90 for Mobile and Desktop.
 ######Overview
 Optimizations made to `views/js/main.js` make views/pizza.html render with a consistent frame-rate at 60fps when scrolling. You will find instructional comments in `main.js`.
 ######Optimizations:
-* Moved constants out of for loops.
-* Generate max number of pizza number is now dynamic, based on screen height.
-* Using local variables is especially important when dealing with HTMLCollection objects.
-* Using getElementsByClassName is faster way to access the DOM than querySelectorAll.
+* Improves loading performance moved elements outside the loop. Using a local variable instead of a property lookup can speed up the loops.
+```
+    var pizzasDiv = document.getElementById("randomPizzas");
+```
+* Using local variables is especially important when dealing with HTMLCollection objects. Using getElementsByClassName is faster way to access the DOM than querySelectorAll.
+```
+    var items = document.getElementsByClassName('mover');
+```
+* Calculates the five phase into its own for loop that appends each phase to an array, rather than declaring and setting the phase variable each time.
+```
+    var phase = [];
+    var top = document.body.scrollTop / 1250;
+    for (var i = 0; i < 5; i++) {
+        phase.push(Math.sin(top + i) * 100);
+    }
+```
+* The pizza item positions are changed by accessing the relevant element of the phase array, rather than reusing the phase variable.
+```
+    for (var i = 0, max = items.length; i < max; i++) {
+    items[i].style.left = items[i].basicLeft + phase[i % 5] + 'px';
+    }
+```
 * Since the control statement (i < items.length) is executed each time through the loop. The function will run faster when this value is stored in a local variable and then accessed from there.
-* Moved scrollTop request outside the for loop and the browser has to give the most up-to-date value.
+```
+    for (var i = 0, max = items.length; i < max; i++) {
+      }
+```
+* Moved scrollTop request outside the for loop and the browser has to give the most up-to-date value. Using a local variable instead of a property lookup can speed up the loops.
+```
+    var top = document.body.scrollTop / 1250;
+```
+* Add this property to `.mover` class in `style.css`
+```
+    -webkit-backface-visibility: hidden;  Chrome, Safari, Opera
+    backface-visibility: hidden;
+  ```
+* Generate max number of pizza number is now dynamic, based on screen height.
+```
+    var rows = Math.ceil(window.screen.height / s);
+    var numberOfPizzas = rows * cols;
+  ```
+* Using document.getElementById() Web API call is faster, saved this DOM call outside the for statement and save it into a local variable.
+```
+  var movingPizzas = document.getElementById('movingPizzas1');
+  ```
+* Declaring the elem variable (var elem;) in the initialization of the for-loop will prevent it from being created every time the loop is executed.
+```
+    for (var i = 0, elem; i < numberOfPizzas; i++) {
+    }
+```
 
 ###3: Computational Efficiency
 ######Overview
@@ -54,6 +98,30 @@ Time to resize pizzas is less than 5 ms using the pizza size slider on the `view
 ######Optimizations:
 * Fixed forced synchronous layout issue with pizza sliders
 * Unrolling loop to improve performance. The basis of this is limiting the number of iterations can mitigate the performance overhead of a loop. Which means making each iteration do the work of multiple iterations.
+```
+switch(size) {
+      case "1":
+        newWidth = 25;
+        break;
+      case "2":
+        newWidth = 33.3;
+        break;
+      case "3":
+        newWidth = 50;
+        break;
+      default:
+        console.log("bug in sizeSwitcher");
+    }
+```
 * Using a local variable instead of a property lookup can speed up the loops.
 * Using getElementsByClassName instead of querySelectorAll is faster way to access the DOM.
+```
+var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+```
 * Modify width changes and remove px calculation.
+* Stores the length of the randomPizzas HTMLCollection in a local variable, limiting the number of times the object is accessed directly.
+```
+for (var i = 0, randomPizzasLength = randomPizzas.length; i < randomPizzasLength; i++) {
+        randomPizzas[i].style.width = newWidth + "%";
+    }
+  ```
